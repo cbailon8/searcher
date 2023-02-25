@@ -85,3 +85,23 @@ loadProducts(
 loadProducts(
   "https://raw.githubusercontent.com/Bootcamp-Espol/FSD02/main/S03D03/clase/recursos/products.xml"
 );
+
+document.addEventListener("DOMContentLoaded", (event) => {
+  let button = document.getElementById("filter");
+
+  button.addEventListener('click', (event) => {
+    let html = "";
+    let campo = document.getElementsByClassName("row")[3];
+    const reserva = campo.innerHTML.slice();
+    let search = document.getElementById("text").value;
+      for(let producto of campo.innerHTML){
+        if(producto.innerHTML.includes(search))
+        html += producto.innerHTML;
+      }
+    if(search==""){
+      campo.innerHTML = reserva;
+    } else{
+      campo.innerHTML = html;
+    }
+});    
+});
