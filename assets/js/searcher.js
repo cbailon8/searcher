@@ -58,7 +58,6 @@ let loadTemplateXML = (xml, template) => {
 let loadProducts = (url) => {
   let arreglo = document.getElementsByClassName("row");
   let plantilla = "";
-
   if (url.includes("json")) {
     fetch(url)
       .then((response) => response.json())
@@ -79,29 +78,33 @@ let loadProducts = (url) => {
   }
 };
 
-loadProducts(
-  "https://raw.githubusercontent.com/Bootcamp-Espol/FSD02/main/S03D03/clase/recursos/products.json"
-);
-loadProducts(
-  "https://raw.githubusercontent.com/Bootcamp-Espol/FSD02/main/S03D03/clase/recursos/products.xml"
-);
+let load = () => {
+  campo.innerHTML = "";
+  loadProducts(
+    "https://raw.githubusercontent.com/Bootcamp-Espol/FSD02/main/S03D03/clase/recursos/products.json"
+  );
+  loadProducts(
+    "https://raw.githubusercontent.com/Bootcamp-Espol/FSD02/main/S03D03/clase/recursos/products.xml"
+  );
+}
 
-document.addEventListener("DOMContentLoaded", (event) => {
-  let button = document.getElementById("filter");
+let campo = document.getElementsByClassName("row")[3];
+load();
+let button = document.getElementById("filter");
 
-  button.addEventListener('click', (event) => {
-    let html = "";
-    let campo = document.getElementsByClassName("row")[3];
-    const reserva = campo.innerHTML.slice();
-    let search = document.getElementById("text").value;
-      for(let producto of campo.innerHTML){
-        if(producto.innerHTML.includes(search))
-        html += producto.innerHTML;
-      }
-    if(search==""){
-      campo.innerHTML = reserva;
-    } else{
-      campo.innerHTML = html;
-    }
-});    
+button.addEventListener("click", (event) => {
+  let html = "";
+  let productos = document.getElementsByClassName(
+    "col-xl-3 col-md-6 mb-xl-0 mb-4 mt-4"
+  );
+
+  let search = document.getElementById("text").value;
+  for (let producto of productos) {
+    if (producto.innerHTML.includes(search)) html += producto.outerHTML;
+  }
+  if (search == "") {
+    load();
+  } else {
+    campo.innerHTML = html;
+  }
 });
