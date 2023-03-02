@@ -81,10 +81,10 @@ let loadProducts = (url) => {
 let load = () => {
   campo.innerHTML = "";
   loadProducts(
-    "https://raw.githubusercontent.com/Bootcamp-Espol/FSD02/main/S03D03/clase/recursos/products.json"
+    "https://raw.githubusercontent.com/Bootcamp-Espol/Datos/main/products.json"
   );
   loadProducts(
-    "https://raw.githubusercontent.com/Bootcamp-Espol/FSD02/main/S03D03/clase/recursos/products.xml"
+    "https://github.com/Bootcamp-Espol/Datos/blob/main/products.xml"
   );
 }
 
