@@ -84,7 +84,7 @@ let load = () => {
     "https://raw.githubusercontent.com/Bootcamp-Espol/Datos/main/products.json"
   );
   loadProducts(
-    "https://github.com/Bootcamp-Espol/Datos/blob/main/products.xml"
+    "https://raw.githubusercontent.com/Bootcamp-Espol/Datos/main/products.xml"
   );
 }
 
